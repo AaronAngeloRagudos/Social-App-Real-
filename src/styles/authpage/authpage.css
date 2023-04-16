@@ -56,6 +56,9 @@
     box-shadow: 0 0 0.25rem rgba(255, 255, 255, 0.25);
   }
 }
+.auth_container article .auth_form_container .auth_form, .auth_container article .auth_form_change .auth_form {
+  margin-top: 1rem;
+}
 .auth_container article .auth_form_change {
   text-align: center;
   border-radius: 0.2rem;

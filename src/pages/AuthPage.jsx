@@ -35,16 +35,15 @@ function AuthPageJSX({ method }) {
                         <h2>Welcome back!</h2>
                         <p>It's great to have you again</p>
                     </div>
-                    <form>
-                        <div className="auth_form">
-                            <SignInMethods />
-                            <div>
-                                <hr />
-                                <span>or</span>
-                            </div>
-                            {method === 'login' || !method ? <Login /> : ''}
-                            {method === 'register' && <Register />}
+                    <form className="auth_form">
+                        <SignInMethods />
+                        <div>
+                            <span />
+                            <p>or</p>
+                            <span />
                         </div>
+                        {method === 'login' || !method ? <Login /> : ''}
+                        {method === 'register' && <Register />}
                     </form>
                 </div>
                 <AuthLinkTo method={method} />
