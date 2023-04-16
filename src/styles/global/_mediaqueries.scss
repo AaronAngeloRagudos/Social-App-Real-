@@ -1,0 +1,35 @@
+@mixin extraSmallDevices {
+    @media (max-width: 480px) { @content; }
+}
+
+@mixin smallDevices {
+    @media (max-width: 640px) { @content; }
+}
+
+@mixin mediumDevices {
+    @media (max-width: 769px) { @content; }
+}
+
+@mixin largeDevices {
+    @media (max-width: 1050px) { @content; }
+}
+
+@mixin extraLargeDevices {
+    @media (max-width: 1279px) { @content; }
+}
+
+@mixin beyondComputerScreenDevices {
+    @media (min-width: 1920px) { @content; }
+}
+
+@mixin lightMode {
+    @media (prefers-color-scheme: light) { @content; }
+}
+
+@mixin darkMode {
+    @media (prefers-color-scheme: dark) { @content; }
+}
+
+@mixin reducedMotion {
+    @media (prefers-reduced-motion) { @content; }
+}

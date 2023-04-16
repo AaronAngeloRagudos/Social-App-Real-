@@ -1,0 +1,56 @@
+@import '../global/mediaqueries.scss';
+@import '../global/mixins.scss';
+@import '../global/variables';
+
+@import './text.scss';
+
+.auth_container {
+    @include centerDiv;
+
+    @include lightMode {
+        background-color: map-get($backgroundColors, 'white');
+        color: map-get($textColors, 'black');
+    }
+
+    @include darkMode {
+        background-color: map-get($backgroundColors, 'black');
+        color: map-get($textColors, 'white');
+    }
+
+    article {
+        @include flexCol(center, center);
+        gap: 0.5rem;
+
+        width: clamp(17.5rem, 90%, 25rem);
+        min-height: 65vh;
+        padding: 0.2rem;
+        border-radius: 0.2rem;
+        
+        .auth_form_container_flex {
+            flex: 0.9;
+            padding: clamp(0.75rem, 4vmax, 2.5rem);
+        }
+
+        .auth_form_container {
+            width: 100%;
+
+            @include lightMode {
+                box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
+            }
+    
+            @include darkMode {
+                box-shadow: 0 0 0.25rem rgba(255, 255, 255, 0.25);
+            }
+        }
+
+        .auth_form_change {
+            text-align: center;
+            border-radius: 0.2rem;
+            margin-top: 0.5rem;
+
+            padding: 1.5rem 0;
+
+            @extend .auth_form_container;
+        }
+    }
+}

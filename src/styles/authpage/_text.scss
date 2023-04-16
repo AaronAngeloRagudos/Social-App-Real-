@@ -1,0 +1,11 @@
+.auth_text_container {
+    text-align: center;
+    user-select: none;
+
+    h2 {
+        font-size: clamp(1rem, 3vmax, 1.65rem);
+    }
+    p {
+        font-size: clamp(0.75rem, 3vmax, 0.9rem);
+    }
+}

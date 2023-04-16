@@ -1,0 +1,31 @@
+@mixin centerDiv {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+}
+
+@mixin flexRow($justify, $align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: row;
+}
+
+@mixin flexCol($justify, $align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: column;
+}
+
+@mixin beforeElement($content: '',
+    $width: 100%,
+    $height: 100%,
+    $position: absolute,
+    $index: -1 ) {
+        content: $content;
+        width: $width;
+        height: $height;
+        z-index: $index;
+        position: $position;
+    }
