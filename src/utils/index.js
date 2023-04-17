@@ -1,5 +1,6 @@
-import { AuthAnimatePlaceholder } from "./authpage"
+import { AuthShowPassword, AuthAnimatePlaceholder } from "./authpage"
 
 export {
+    AuthShowPassword,
     AuthAnimatePlaceholder
 }

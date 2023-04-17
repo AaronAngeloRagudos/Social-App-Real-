@@ -1,5 +1,4 @@
 import { loginInput } from '../../../constants';
-import { AuthAnimatePlaceholder } from '../../../utils';
 
 export default function AuthLoginInput(props) {
 
@@ -11,8 +10,14 @@ export default function AuthLoginInput(props) {
                         htmlFor={input.id}
                         className='auth_input_label'
                         title={input.title}
-                        onFocus={() => props.AuthAnimatePlaceholder(input.id, index, 'onfocus')}
-                        onBlur={() => props.AuthAnimatePlaceholder(input.id, index, 'outfocus')}
+                        onFocus={ async () => {
+                            const AuthAnimatePlaceholder = await props.importAnimatePlaceholder();
+                            AuthAnimatePlaceholder(input.id, index, 'onfocus', props.setHidden);
+                        }}
+                        onBlur={ async () => {
+                            const AuthAnimatePlaceholder = await props.importAnimatePlaceholder();
+                            AuthAnimatePlaceholder(input.id, index, 'outfocus', props.setHidden);
+                        }}
                         key={input.id}
                     >
                         <span className="placeholder_text">
@@ -33,12 +38,15 @@ export default function AuthLoginInput(props) {
                                         : props.password
                                 }
                                 onChange={
-                                    (e) => {
+                                     async (e) => {
                                         input.id === 'auth_email_input'
                                             ? props.setEmail(e.target.value)
-                                            : props.setPassword(e.target.value); props.AuthAnimatePlaceholder(input.id, index, 'onfocus');
+                                            : props.setPassword(e.target.value);
+                                        const AuthAnimatePlaceholder = await props.importAnimatePlaceholder();
+                                        AuthAnimatePlaceholder(input.id, index, 'onfocus', props.setHidden);
                                     }
                                 }
+                                required
                             />
                         </div>
                         {
@@ -50,6 +58,12 @@ export default function AuthLoginInput(props) {
                                     id="auth_show_password"
                                     hidden={props.hidden}
                                     title={'Show/Hide password'}
+                                    onClick={async (e) => {
+                                        const { AuthShowPassword } = await import(
+                                            '../../../utils'
+                                        )
+                                        AuthShowPassword(e);
+                                    }}
                                 >
                                     SHOW
                                 </button>

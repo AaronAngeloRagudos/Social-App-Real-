@@ -1,29 +1,42 @@
-export default async function AuthAnimatePlaceholder(params) {
+export default function AuthAnimatePlaceholder(id, index, focus, setHidden) {
+    const placeholder = document.getElementsByClassName('placeholder_text')[index];
+    const input = document.getElementsByClassName('auth_input')[index];
 
-    if (params.id === 'auth_password_input') {
-        params.setHidden(await showShowPasswordButton({
-            id: params.id,
-            hidden: params.hidden,
-            setHidden: params.setHidden
-        }));
+    if (id === 'auth_password_input') {
+        animateShowButton(input, setHidden);
+    }
+
+    if (input.value) {
+        return;
+    }
+
+    if (!input.value) {
+        if (focus === 'onfocus') {
+            placeholder.animate({
+                transform: 'scale(0.82) translate(0, -130%)'
+            }, {
+                duration: 150,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            })
+        }
+
+        if (focus === 'outfocus') {
+            placeholder.animate({
+                transform: 'scale(1) translate(10%, -50%)'
+            }, {
+                duration: 150,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            })
+        }
     }
 };
 
-function showShowPasswordButton(params) {
-    const input = document.getElementById(params.id);
-
-    return new Promise((resolve, reject) => {
-        if (checkIfPasswordInputIsEmpty(input)) {
-            resolve(true);
-        }
-        resolve(false);
-    });
-}
-
-function checkIfPasswordInputIsEmpty(input) {
-    if (!input.value) {
-        return true;
+function animateShowButton(input, setHidden) {
+    if (input.value) {
+        return setHidden(false);
     }
 
-    return false;
-}
+    setHidden(true);
+};
