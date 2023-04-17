@@ -3,9 +3,11 @@
 @import '../global/variables';
 
 @import './text.scss';
+@import './buttons.scss';
 
 .auth_container {
     @include centerDiv;
+    padding: 5rem 0;
 
     @include lightMode {
         background-color: map-get($backgroundColors, 'white');
@@ -22,10 +24,10 @@
         gap: 0.5rem;
 
         width: clamp(17.5rem, 90%, 25rem);
-        min-height: 65vh;
-        padding: 0.2rem;
+        min-height: clamp(25rem, 65vh, 50rem);
+        padding: 0.25em;
         border-radius: 0.2rem;
-        
+
         .auth_form_container_flex {
             flex: 0.9;
             padding: clamp(0.75rem, 4vmax, 2.5rem);
@@ -37,14 +39,66 @@
             @include lightMode {
                 box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
             }
-    
+
             @include darkMode {
                 box-shadow: 0 0 0.25rem rgba(255, 255, 255, 0.25);
             }
 
             .auth_form {
-                margin-top: 1rem;
-                
+                margin-top: 0.5rem;
+
+                .auth_or_container {
+                    @include flexRow(space-around, center);
+                    padding: 0.5rem;
+                    margin-top: 0.5rem;
+
+                    span {
+                        flex: 0.49;
+                        width: 100%;
+                        height: 0.12rem;
+                        border-radius: 100%;
+
+                        &:nth-child(1) {
+                            @include darkMode {
+                                background:
+                                    linear-gradient(90deg,
+                                        map-get($backgroundColors, 'black'),
+                                        map-get($backgroundColors, 'white'));
+                            }
+
+                            @include lightMode {
+                                background:
+                                    linear-gradient(90deg,
+                                        map-get($backgroundColors, 'white'),
+                                        map-get($backgroundColors, 'black'));
+                            }
+                        }
+
+                        &:nth-child(3) {
+                            @include darkMode {
+                                background:
+                                    linear-gradient(90deg,
+                                        map-get($backgroundColors, 'white'),
+                                        map-get($backgroundColors, 'black'));
+                            }
+
+                            @include lightMode {
+                                background:
+                                    linear-gradient(90deg,
+                                        map-get($backgroundColors, 'black'),
+                                        map-get($backgroundColors, 'white'));
+                            }
+                        }
+                    }
+
+                    p {
+                        user-select: none;
+
+                        font-size: 0.87rem;
+
+                        padding: 0 0.5rem;
+                    }
+                }
             }
         }
 
@@ -56,6 +110,103 @@
             padding: 1.5rem 0;
 
             @extend .auth_form_container;
+        }
+    }
+}
+
+.auth_form {
+    form {
+        padding: 0.75rem 0.25rem;
+
+        .auth_input_label {
+            @include flexRow(flex-start, center);
+
+            position: relative;
+            margin-top: 2rem;
+
+            z-index: 0;
+
+            border-radius: 0.25rem;
+            border: 1px solid;
+
+            @include lightMode {
+                background-color: map-get($backgroundColors, 'white');
+                border-color: map-get($backgroundColors, 'black');
+            }
+
+            @include darkMode {
+                background-color: map-get($backgroundColors, 'black');
+                border-color: map-get($backgroundColors, 'white');
+            }
+
+            cursor: text;
+
+            .placeholder_text {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translate(10%, -50%);
+
+                z-index: 1;
+
+                font-size: 0.9rem;
+
+                color: map-get($textColors, 'gray');
+                transition: 350ms;
+
+                @include reducedMotion {
+                    transition: 0ms;
+                }
+            }
+
+            .auth_input_container {
+                padding-top: 1.25rem;
+                padding-left: 0.75rem;
+                padding-bottom: 0.25rem;
+                width: 95%;
+            }
+
+            .auth_input {
+                background-color: inherit;
+                outline: transparent;
+                border: none;
+                width: 100%;
+
+                color: inherit;
+                font-size: clamp(0.85rem, 3vmax, 0.9rem);
+
+                &::-ms-reveal,
+                &::-ms-clear {
+                    display: none;
+                }
+
+                
+                &:-webkit-autofill {
+                    @include darkMode {
+                        -webkit-text-fill-color: map-get($textColors, 'white');
+                        -webkit-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'black') inset;
+                        -khtml-text-fill-color: map-get($textColors, 'white');
+                        -khtml-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'black') inset;
+                        -moz-text-fill-color: map-get($textColors, 'white');
+                        -moz-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'black') inset;
+                        -o-text-fill-color: map-get($textColors, 'white');
+                        -o-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'black') inset;
+                        box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'black') inset;
+                    }
+
+                    @include lightMode {
+                        -webkit-text-fill-color: map-get($textColors, 'black');
+                        -webkit-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'white') inset;
+                        -khtml-text-fill-color: map-get($textColors, 'black');
+                        -khtml-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'white') inset;
+                        -moz-text-fill-color: map-get($textColors, 'black');
+                        -moz-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'white') inset;
+                        -o-text-fill-color: map-get($textColors, 'black');
+                        -o-box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'white') inset;
+                        box-shadow: 0 0 0px 1000px map-get($backgroundColors, 'white') inset;
+                    }
+                }
+            }
         }
     }
 }

@@ -1,0 +1,75 @@
+.auth_sign_in_methods_container {
+    padding: 0.75rem 0;
+    margin-top: 0.5rem;
+
+    button {
+        width: 80%;
+        margin: auto;
+
+        @include flexRow(center, flex-end);
+        gap: 0.75rem;
+
+        padding: 0.25rem 0;
+
+        background-color: transparent;
+        border: none;
+        border-radius: 0.5rem;
+        outline: transparent;
+        color: inherit;
+        cursor: pointer;
+
+        transition: 200ms ease-in-out;
+
+        @include reducedMotion {
+            transition: 0ms;
+        }
+
+        &:hover,
+        &:focus {
+            @include lightMode {
+                background-color: map-get($backgroundColors, 'black');
+                color: white;
+
+                box-shadow:
+                    0rem 0.5rem 1rem rgba(0, 0, 0, 0.055),
+                    0rem 1.5rem 1.5rem rgba(0, 0, 0, 0.1),
+                    0 0.75rem 1rem rgba(0, 0, 0, 0.055);
+            }
+
+            @include darkMode {
+                background-color: map-get($backgroundColors, 'white');
+                color: black;
+
+                box-shadow:
+                    0rem 0.5rem 1rem rgba(255, 255, 255, 0.055),
+                    0rem 1.5rem 1.5rem rgba(255, 255, 255, 0.1),
+                    0 0.75rem 1rem rgba(255, 255, 255, 0.055);
+            }
+        }
+
+        svg {
+            width: clamp(1.25rem, 4vmax, 1.75rem);
+        }
+
+        p {
+            font-size: clamp(0.8rem, 1vmax, 1rem);
+            margin-bottom: 0.25rem;
+        }
+    }
+}
+
+label[for='auth_password_input'] {
+    div {
+        button {
+            background-color: transparent;
+            color: inherit;
+            margin-right: 0.5rem;
+            padding: 0.2rem 0.25rem;
+
+            border: none;
+            cursor: pointer;
+
+            font-size: 0.76rem;
+        }
+    }
+}

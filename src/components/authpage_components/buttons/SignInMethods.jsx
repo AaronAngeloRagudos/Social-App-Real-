@@ -8,6 +8,7 @@ export default function SignInMethods () {
                 type="button"
                 id="auth_google_sign_in"
                 tabIndex={0}
+                title='Sign in with Google'
             >
                 <GoogleIcon />
                 <p>
