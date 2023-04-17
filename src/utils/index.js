@@ -1,6 +1,7 @@
-import { AuthShowPassword, AuthAnimatePlaceholder } from "./authpage"
+import { AuthShowPassword, AuthAnimatePlaceholder, AuthHandleSubmit } from "./authpage"
 
 export {
     AuthShowPassword,
-    AuthAnimatePlaceholder
+    AuthAnimatePlaceholder,
+    AuthHandleSubmit
 }

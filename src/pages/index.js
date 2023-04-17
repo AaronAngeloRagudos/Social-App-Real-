@@ -5,6 +5,7 @@ import Error from './Error';
 import ProfilePage from './ProfilePage';
 import QuotesPage from './QuotesPage';
 import MainPage from './MainPage';
+import ForgotPassword from './ForgotPassword';
 
 export {
     AuthPage,
@@ -13,5 +14,6 @@ export {
     Error,
     ProfilePage,
     QuotesPage,
-    MainPage
+    MainPage,
+    ForgotPassword
 }

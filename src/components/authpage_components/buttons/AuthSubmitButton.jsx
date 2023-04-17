@@ -1,6 +1,15 @@
-export default function AuthSubmitButton () {
+export default function AuthSubmitButton (props) {
 
     return (
-        <div>Submit Button</div>
+        <button
+            type="submit"
+            id="auth_submit_form_button"
+            className="auth_submit"
+            title={props.type}
+            name="auth_submit_form_button"
+            disabled={props.isDisabled}
+        >
+            {props.type}
+        </button>
     );
 };

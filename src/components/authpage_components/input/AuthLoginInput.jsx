@@ -10,13 +10,23 @@ export default function AuthLoginInput(props) {
                         htmlFor={input.id}
                         className='auth_input_label'
                         title={input.title}
-                        onFocus={ async () => {
+                        onFocus={async () => {
                             const AuthAnimatePlaceholder = await props.importAnimatePlaceholder();
-                            AuthAnimatePlaceholder(input.id, index, 'onfocus', props.setHidden);
+                            AuthAnimatePlaceholder({
+                                id: input.id,
+                                index,
+                                focus: 'onfocus',
+                                setHidden: props.setHidden
+                            });
                         }}
-                        onBlur={ async () => {
+                        onBlur={async () => {
                             const AuthAnimatePlaceholder = await props.importAnimatePlaceholder();
-                            AuthAnimatePlaceholder(input.id, index, 'outfocus', props.setHidden);
+                            AuthAnimatePlaceholder({
+                                id: input.id,
+                                index,
+                                focus: 'outfocus',
+                                setHidden: props.setHidden
+                            });
                         }}
                         key={input.id}
                     >
@@ -32,21 +42,26 @@ export default function AuthLoginInput(props) {
                                 className={input.className}
                                 placeholder={input.placeholder}
                                 title={input.title}
+                                required
                                 value={
                                     input.id === 'auth_email_input'
                                         ? props.email
                                         : props.password
                                 }
                                 onChange={
-                                     async (e) => {
+                                    async (e) => {
                                         input.id === 'auth_email_input'
                                             ? props.setEmail(e.target.value)
                                             : props.setPassword(e.target.value);
                                         const AuthAnimatePlaceholder = await props.importAnimatePlaceholder();
-                                        AuthAnimatePlaceholder(input.id, index, 'onfocus', props.setHidden);
+                                        AuthAnimatePlaceholder({
+                                            id: input.id,
+                                            index,
+                                            focus: 'onfocus',
+                                            setHidden: props.setHidden
+                                        });
                                     }
                                 }
-                                required
                             />
                         </div>
                         {

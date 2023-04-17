@@ -1,9 +1,9 @@
-export default function AuthAnimatePlaceholder(id, index, focus, setHidden) {
-    const placeholder = document.getElementsByClassName('placeholder_text')[index];
-    const input = document.getElementsByClassName('auth_input')[index];
+export default function AuthAnimatePlaceholder(params) {
+    const placeholder = document.getElementsByClassName('placeholder_text')[params.index];
+    const input = document.getElementsByClassName('auth_input')[params.index];
 
-    if (id === 'auth_password_input') {
-        animateShowButton(input, setHidden);
+    if (params.id === 'auth_password_input') {
+        animateShowButton(input, params.setHidden);
     }
 
     if (input.value) {
@@ -11,7 +11,7 @@ export default function AuthAnimatePlaceholder(id, index, focus, setHidden) {
     }
 
     if (!input.value) {
-        if (focus === 'onfocus') {
+        if (params.focus === 'onfocus') {
             placeholder.animate({
                 transform: 'scale(0.82) translate(0, -130%)'
             }, {
@@ -21,7 +21,7 @@ export default function AuthAnimatePlaceholder(id, index, focus, setHidden) {
             })
         }
 
-        if (focus === 'outfocus') {
+        if (params.focus === 'outfocus') {
             placeholder.animate({
                 transform: 'scale(1) translate(10%, -50%)'
             }, {
