@@ -98,7 +98,7 @@ label[for='auth_password_input'] {
                 border-radius: 0.5rem;
                 cursor: pointer;
 
-                transition: 150ms ease-in-out;
+                transition: 50ms ease-in-out;
 
                 @include reducedMotion {
                     transition: 0ms;

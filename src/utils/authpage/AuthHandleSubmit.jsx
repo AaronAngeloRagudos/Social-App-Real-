@@ -1,3 +1,6 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+
 export default function AuthHandleSubmit (params) {
     params.e.preventDefault();
 
@@ -8,5 +11,6 @@ export default function AuthHandleSubmit (params) {
 
 
 async function loginUser(email, password) {
+    const login = signInWithEmailAndPassword(auth, email, password);
     
 }

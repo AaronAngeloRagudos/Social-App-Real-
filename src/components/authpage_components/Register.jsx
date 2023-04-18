@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AuthRegisterInput } from "./input";
 import { AuthSubmitButton } from "./buttons";
 
@@ -16,16 +16,11 @@ export default function Register() {
         return AuthAnimatePlaceholder;
     }
 
-    useEffect(() => {
-        function changeSubmitButtonState() {
-            setIsDisabled(true);
-            if (email && userName && fullName && password) {
-                setIsDisabled(false);
-            }
-        };
+    async function AuthHandleInputChange() {
+        const { AuthHandleInputChange } = await import('../../utils');
+        return AuthHandleInputChange;
+    };
 
-        return () => changeSubmitButtonState();
-    }, [email, password, hidden]);
 
     return (
         <form
@@ -55,6 +50,8 @@ export default function Register() {
                 importAnimatePlaceholder={importAnimatePlaceholder}
                 hidden={hidden}
                 setHidden={setHidden}
+                setIsDisabled={setIsDisabled}
+                AuthHandleInputChange={AuthHandleInputChange}
             />
             <AuthSubmitButton
                 type='register'

@@ -43,6 +43,7 @@ export default function AuthRegisterInput(props) {
                                 placeholder={input.placeholder}
                                 title={input.title}
                                 required
+                                minLength={input.id === 'auth_password_input' ? 4 : 1}
                                 value={
                                     input.id === 'auth_email_input'
                                         ? props.email
@@ -68,6 +69,19 @@ export default function AuthRegisterInput(props) {
                                             focus: 'onfocus',
                                             setHidden: props.setHidden,
                                         });
+                                        const AuthHandleInputChange = await props.AuthHandleInputChange();
+                                        AuthHandleInputChange({
+                                            value: e.target.value,
+                                            input: input.id,
+                                            type: 'register',
+                                            setIsDisabled: props.setIsDisabled
+                                        });
+                                        if (input.id === 'auth_password_input') {
+                                            const { AuthCheckPasswordStrength } = await import(
+                                                '../../../utils'
+                                            );
+                                            AuthCheckPasswordStrength(e.target.value, index);
+                                        }
                                     }
                                 }
                             />
@@ -75,22 +89,34 @@ export default function AuthRegisterInput(props) {
                         {
                             input.id === 'auth_password_input'
                             &&
-                            <div>
-                                <button
-                                    type="button"
-                                    id="auth_show_password"
-                                    hidden={props.hidden}
-                                    title={'Show/Hide password'}
-                                    onClick={async (e) => {
-                                        const { AuthShowPassword } = await import(
-                                            '../../../utils'
-                                        )
-                                        AuthShowPassword(e);
-                                    }}
+                            <>
+                                <div>
+                                    <button
+                                        type="button"
+                                        id="auth_show_password"
+                                        hidden={props.hidden}
+                                        title={'Show/Hide password'}
+                                        onClick={async (e) => {
+                                            const { AuthShowPassword } = await import(
+                                                '../../../utils'
+                                            )
+                                            AuthShowPassword(e);
+                                        }}
+                                    >
+                                        SHOW
+                                    </button>
+                                </div>
+                                <div
+                                    id='auth_password_strength_indicator'
+                                    className='auth_password_strength_indicator'
+                                    value={0}
+                                    max={100}
+                                    title={'Password strength'}
                                 >
-                                    SHOW
-                                </button>
-                            </div>
+                                    <span className='auth_progress_bar'>&nbsp;</span>
+                                    <p className='auth_strength_text'>weak</p>
+                                </div>
+                            </>
                         }
                     </label>
                 ))

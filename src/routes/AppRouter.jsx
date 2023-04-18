@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { HandleAuthPageRoutes, HandleMainPageRoutes, HandleUserSignIn } from './index';
 import { Error } from "../pages";
 
@@ -18,6 +18,12 @@ export default function AppRouter() {
         path="authpage/*"
         element={
           <HandleAuthPageRoutes />
+        }
+      />
+      <Route 
+        path="*"
+        element={
+          <Error />
         }
       />
     </Routes>

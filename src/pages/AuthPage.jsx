@@ -1,7 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import Error from "./Error";
-import { Login, Register, SignInMethods } from '../components';
+import { Login, SignInMethods } from '../components';
 import '../styles/authpage/authpage.css';
+import { Suspense, lazy } from "react";
+import { Loader } from './index';
+const Register = lazy(() => import('../components/authpage_components/Register'));
 
 export default function AuthPage() {
     const params = useParams();
@@ -32,12 +35,18 @@ function AuthPageJSX({ method }) {
             <article>
                 <div className="auth_form_container auth_form_container_flex">
                     <div className="auth_text_container">
-                        <h2>{ method === 'register'
-                        ? 'Chat Book'
-                        : 'Welcome back!' }</h2>
-                        <p>{ method === 'register'
-                        ? 'Start your story'
-                        : 'It\'s great to have you again' }</p>
+                        <h2>{
+                            method === 'register'
+                                ? 'Chat Book'
+                                : 'Welcome back!'
+                        }
+                        </h2>
+                        <p>{
+                            method === 'register'
+                                ? 'Start your story'
+                                : 'It\'s great to have you again'
+                        }
+                        </p>
                     </div>
                     <div className="auth_form">
                         <SignInMethods />
@@ -47,7 +56,13 @@ function AuthPageJSX({ method }) {
                             <span />
                         </div>
                         {method === 'login' || !method ? <Login /> : ''}
-                        {method === 'register' && <Register />}
+                        {
+                            method === 'register'
+                            &&
+                            <Suspense fallback={ <Loader /> } >
+                                <Register />
+                            </Suspense>
+                        }
                     </div>
                 </div>
                 <AuthLinkTo method={method} />

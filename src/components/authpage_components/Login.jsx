@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AuthLoginInput } from "./input";
 import { AuthSubmitButton } from "./buttons";
 import { Link } from "react-router-dom";
 
 export default function Login() {
     const [hidden, setHidden] = useState(true);
-    const [isDisabled, setIsDisabled] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isDisabled, setIsDisabled] = useState(true);
 
     // lazy load functions only when it is required (i.e. when input is focused on or on change).
     async function importAnimatePlaceholder() {
@@ -15,16 +15,10 @@ export default function Login() {
         return AuthAnimatePlaceholder;
     }
 
-    useEffect(() => {
-        function changeSubmitButtonState() {
-            setIsDisabled(true);
-            if (email && password) {
-                setIsDisabled(false);
-            }
-        };
-
-        return () => changeSubmitButtonState();
-    }, [email, password, hidden]);
+    async function AuthHandleInputChange() {
+        const { AuthHandleInputChange } = await import('../../utils');
+        return AuthHandleInputChange;
+    };
 
     return (
         <form
@@ -44,6 +38,8 @@ export default function Login() {
                 importAnimatePlaceholder={importAnimatePlaceholder}
                 hidden={hidden}
                 setHidden={setHidden}
+                AuthHandleInputChange={AuthHandleInputChange}
+                setIsDisabled={setIsDisabled}
             />
             <AuthSubmitButton
                 type='login'
