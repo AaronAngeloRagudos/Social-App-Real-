@@ -32,8 +32,12 @@ function AuthPageJSX({ method }) {
             <article>
                 <div className="auth_form_container auth_form_container_flex">
                     <div className="auth_text_container">
-                        <h2>Welcome back!</h2>
-                        <p>It's great to have you again</p>
+                        <h2>{ method === 'register'
+                        ? 'Chat Book'
+                        : 'Welcome back!' }</h2>
+                        <p>{ method === 'register'
+                        ? 'Start your story'
+                        : 'It\'s great to have you again' }</p>
                     </div>
                     <div className="auth_form">
                         <SignInMethods />

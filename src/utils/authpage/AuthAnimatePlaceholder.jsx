@@ -6,21 +6,17 @@ export default function AuthAnimatePlaceholder(params) {
         animateShowButton(input, params.setHidden);
     }
 
-    if (input.value) {
-        return;
+    if (params.focus === 'onfocus') {
+        placeholder.animate({
+            transform: 'scale(0.82) translate(0, -130%)'
+        }, {
+            duration: 150,
+            easing: 'ease-in-out',
+            fill: 'forwards'
+        })
     }
 
     if (!input.value) {
-        if (params.focus === 'onfocus') {
-            placeholder.animate({
-                transform: 'scale(0.82) translate(0, -130%)'
-            }, {
-                duration: 150,
-                easing: 'ease-in-out',
-                fill: 'forwards'
-            })
-        }
-
         if (params.focus === 'outfocus') {
             placeholder.animate({
                 transform: 'scale(1) translate(10%, -50%)'

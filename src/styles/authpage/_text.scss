@@ -3,9 +3,47 @@
     user-select: none;
 
     h2 {
-        font-size: clamp(1rem, 3vmax, 1.65rem);
+        font-size: clamp(1.3rem, 3vmax, 1.65rem);
     }
+
     p {
-        font-size: clamp(0.75rem, 3vmax, 0.9rem);
+        font-size: clamp(0.9rem, 3vmax, 1.05rem);
+    }
+}
+
+.auth_container {
+    a {
+        color: map-get($textColors, 'lightblue');
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 700;
+
+        transition: 150ms ease-in-out;
+
+        @include reducedMotion {
+            transition: 0ms;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+}
+
+.auth_forgot_password_a_container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.auth_form_change {
+    p {
+        font-size: clamp(0.9rem, 0.75vmax, 1rem);
+        user-select: none;
+
+        a {
+            margin-left: 0.5rem;
+            font-size: inherit;
+        }
     }
 }

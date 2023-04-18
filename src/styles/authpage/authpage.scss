@@ -124,7 +124,7 @@
             position: relative;
             margin-top: 2rem;
 
-            z-index: 0;
+            z-index: 1;
 
             border-radius: 0.25rem;
             border: 1px solid;
@@ -147,12 +147,14 @@
                 left: 0;
                 transform: translate(10%, -50%);
 
-                z-index: 1;
+                z-index: 0;
 
                 font-size: 0.9rem;
 
-                color: map-get($textColors, 'gray');
+                color: gray;
                 transition: 350ms;
+
+                user-select: none;
 
                 @include reducedMotion {
                     transition: 0ms;
@@ -167,7 +169,7 @@
             }
 
             .auth_input {
-                background-color: inherit;
+                background-color: transparent;
                 outline: transparent;
                 border: none;
                 width: 100%;

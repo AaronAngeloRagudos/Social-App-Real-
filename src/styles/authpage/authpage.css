@@ -5,10 +5,42 @@
           user-select: none;
 }
 .auth_text_container h2 {
-  font-size: clamp(1rem, 3vmax, 1.65rem);
+  font-size: clamp(1.3rem, 3vmax, 1.65rem);
 }
 .auth_text_container p {
-  font-size: clamp(0.75rem, 3vmax, 0.9rem);
+  font-size: clamp(0.9rem, 3vmax, 1.05rem);
+}
+
+.auth_container a {
+  color: rgb(105, 127, 218);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: 150ms ease-in-out;
+}
+@media (prefers-reduced-motion) {
+  .auth_container a {
+    transition: 0ms;
+  }
+}
+.auth_container a:hover, .auth_container a:focus {
+  text-decoration: underline;
+}
+
+.auth_forgot_password_a_container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.auth_form_change p {
+  font-size: clamp(0.9rem, 0.75vmax, 1rem);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.auth_form_change p a {
+  margin-left: 0.5rem;
+  font-size: inherit;
 }
 
 .auth_sign_in_methods_container {
@@ -55,7 +87,7 @@
   width: clamp(1.25rem, 4vmax, 1.75rem);
 }
 .auth_sign_in_methods_container button p {
-  font-size: clamp(0.8rem, 1vmax, 1rem);
+  font-size: clamp(1rem, 1vmax, 1.05rem);
   margin-bottom: 0.25rem;
 }
 
@@ -67,6 +99,95 @@ label[for=auth_password_input] div button {
   border: none;
   cursor: pointer;
   font-size: 0.76rem;
+}
+
+.auth_form form .auth_submit_button_container {
+  width: 100%;
+  margin-top: 2rem;
+}
+.auth_form form .auth_submit_button_container button[type=submit] {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: row;
+  padding: clamp(0.5rem, 2vmax, 0.65rem) 0;
+  text-transform: uppercase;
+  font-size: clamp(0.9rem, 2vmax, 1.05rem);
+  background-color: rgb(100, 149, 237);
+  color: inherit;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+@media (prefers-reduced-motion) {
+  .auth_form form .auth_submit_button_container button[type=submit] {
+    transition: 0ms;
+  }
+}
+.auth_form form .auth_submit_button_container button[type=submit] p {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: 250ms ease-in-out;
+}
+@media (prefers-reduced-motion) {
+  .auth_form form .auth_submit_button_container button[type=submit] p {
+    transition: 0ms;
+  }
+}
+.auth_form form .auth_submit_button_container button[type=submit] p svg {
+  width: clamp(1.25rem, 30%, 1.5rem);
+  opacity: 0;
+  transform: translate(100%, -50%);
+  transition: 250ms ease-in-out;
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+@media (prefers-reduced-motion) {
+  .auth_form form .auth_submit_button_container button[type=submit] p svg {
+    transition: 0ms;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .auth_form form .auth_submit_button_container button[type=submit] p svg {
+    fill: rgb(25, 20, 20);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .auth_form form .auth_submit_button_container button[type=submit] p svg {
+    fill: rgb(230, 235, 235);
+  }
+}
+.auth_form form .auth_submit_button_container button[type=submit]:hover, .auth_form form .auth_submit_button_container button[type=submit]:focus {
+  background-color: rgb(105, 127, 218);
+  box-shadow: 0rem 0.5rem 1rem rgba(25, 55, 109, 0.055), 0rem 1.5rem 1.5rem rgba(25, 55, 109, 0.1), 0 0.75rem 1rem rgba(25, 55, 109, 0.055);
+}
+.auth_form form .auth_submit_button_container button[type=submit]:hover p, .auth_form form .auth_submit_button_container button[type=submit]:focus p {
+  margin-right: 0.75rem;
+}
+.auth_form form .auth_submit_button_container button[type=submit]:hover p svg, .auth_form form .auth_submit_button_container button[type=submit]:focus p svg {
+  opacity: 1;
+  transform: translate(120%, -50%);
+}
+.auth_form form .auth_submit_button_container button[type=submit]:disabled {
+  background-color: rgb(25, 55, 109);
+  color: gray;
+  cursor: default;
+}
+.auth_form form .auth_submit_button_container button[type=submit]:disabled:hover {
+  box-shadow: none;
+}
+.auth_form form .auth_submit_button_container button[type=submit]:disabled:hover p {
+  margin: auto;
+}
+.auth_form form .auth_submit_button_container button[type=submit]:disabled:hover p svg {
+  opacity: 0;
+  transform: translate(100%, -50%);
 }
 
 .auth_container {
@@ -176,7 +297,7 @@ label[for=auth_password_input] div button {
   flex-direction: row;
   position: relative;
   margin-top: 2rem;
-  z-index: 0;
+  z-index: 1;
   border-radius: 0.25rem;
   border: 1px solid;
   cursor: text;
@@ -198,10 +319,13 @@ label[for=auth_password_input] div button {
   top: 50%;
   left: 0;
   transform: translate(10%, -50%);
-  z-index: 1;
+  z-index: 0;
   font-size: 0.9rem;
-  color: rgb(110, 110, 110);
+  color: gray;
   transition: 350ms;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 @media (prefers-reduced-motion) {
   .auth_form form .auth_input_label .placeholder_text {
@@ -215,7 +339,7 @@ label[for=auth_password_input] div button {
   width: 95%;
 }
 .auth_form form .auth_input_label .auth_input {
-  background-color: inherit;
+  background-color: transparent;
   outline: transparent;
   border: none;
   width: 100%;

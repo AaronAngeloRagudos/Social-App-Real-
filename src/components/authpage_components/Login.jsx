@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AuthLoginInput } from "./input";
 import { AuthSubmitButton } from "./buttons";
+import { Link } from "react-router-dom";
 
 export default function Login() {
     const [hidden, setHidden] = useState(true);
@@ -48,6 +49,15 @@ export default function Login() {
                 type='login'
                 isDisabled={isDisabled}
             />
+            <div className="auth_forgot_password_a_container">
+            <Link
+                to={'#'}
+                className="auth_forgot_password_a"
+                title="Recover your password"
+            >
+                Forgot Password?
+            </Link>
+            </div>
         </form>
     );
 };

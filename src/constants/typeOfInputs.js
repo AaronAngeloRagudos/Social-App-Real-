@@ -31,7 +31,7 @@ export const registerInput = [
     },
     {
         type: 'text',
-        autoComplete: 'username',
+        autoComplete: 'name',
         title: 'Enter your username',
         id: 'auth_username_input',
         name: 'Username Input',

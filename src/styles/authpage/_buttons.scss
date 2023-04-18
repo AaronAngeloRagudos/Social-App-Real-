@@ -52,7 +52,7 @@
         }
 
         p {
-            font-size: clamp(0.8rem, 1vmax, 1rem);
+            font-size: clamp(1rem, 1vmax, 1.05rem);
             margin-bottom: 0.25rem;
         }
     }
@@ -70,6 +70,104 @@ label[for='auth_password_input'] {
             cursor: pointer;
 
             font-size: 0.76rem;
+        }
+    }
+}
+
+.auth_form {
+    form {
+        .auth_submit_button_container {
+            width: 100%;
+            margin-top: 2rem;
+
+            button[type='submit'] {
+                width: 80%;
+                margin: auto;
+
+                @include flexRow(center, flex-end);
+
+                padding: clamp(0.5rem, 2vmax, 0.65rem) 0;
+
+                text-transform: uppercase;
+                font-size: clamp(0.9rem, 2vmax, 1.05rem);
+
+                background-color: map-get($backgroundColors, 'cornflower_blue');
+                color: inherit;
+
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+
+                transition: 150ms ease-in-out;
+
+                @include reducedMotion {
+                    transition: 0ms;
+                }
+
+                p {
+                    position: relative;
+                    user-select: none;
+                    transition: 250ms ease-in-out;
+                    @include reducedMotion {
+                        transition: 0ms;
+                    }
+                    svg {
+                        width: clamp(1.25rem, 30%, 1.5rem);
+                        opacity: 0;
+                        transform: translate(100%, -50%);
+                        transition: 250ms ease-in-out;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+
+                        @include reducedMotion {
+                            transition: 0ms;
+                        }
+
+                        @include lightMode {
+                            fill: map-get($backgroundColors, 'black');
+                        }
+
+                        @include darkMode {
+                            fill: map-get($backgroundColors, 'white');
+                        }
+                    }
+                }
+
+                &:hover,
+                &:focus {
+                    p {
+                        margin-right: 0.75rem;
+                        svg {
+                            opacity: 1;
+                            transform: translate(120%, -50%);
+                        }
+                    }
+
+                    background-color: map-get($backgroundColors, 'lightblue');
+                    box-shadow:
+                    0rem 0.5rem 1rem rgba(25, 55, 109, 0.055),
+                    0rem 1.5rem 1.5rem rgba(25, 55, 109, 0.1),
+                    0 0.75rem 1rem rgba(25, 55, 109, 0.055);
+                }
+
+                &:disabled {
+                    background-color: map-get($backgroundColors, 'blue');
+                    color: gray;
+                    cursor: default;
+
+                    &:hover {
+                        box-shadow: none;
+                        p {
+                            margin: auto;
+                            svg {
+                                opacity: 0;
+                                transform: translate(100%, -50%);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
