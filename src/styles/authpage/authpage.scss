@@ -217,32 +217,29 @@
     .auth_password_strength_indicator {
         cursor: default;
         user-select: none;
-        opacity: 0;
         position: absolute;
         top: 115%;
         left: 0.2rem;
         width: 80%;
         height: 0.4rem;
-        font-size: 0.7rem;
         
         border-radius: 1rem;
-
-        transition: 50ms ease-in;
-
-        @include reducedMotion {
-            transition: 0ms;
-        }
-        
-        p {
-            margin-top: 0.35rem;
-            color: inherit;
-        }
+        overflow: hidden;
 
         .auth_progress_bar {
+            width: 100%;
+            transform: translate(-100%, 0);
+            opacity: 0;
             position: absolute;
             background-color: gray;
             height: 0.18rem;
             border-radius: inherit;
+
+            transition: 50ms ease-in;
+
+            @include reducedMotion {
+                transition: 0ms;
+            }
         }
     }
 }

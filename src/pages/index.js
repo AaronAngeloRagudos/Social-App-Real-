@@ -6,6 +6,7 @@ import ProfilePage from './ProfilePage';
 import QuotesPage from './QuotesPage';
 import MainPage from './MainPage';
 import ForgotPassword from './ForgotPassword';
+import SurveyUser from './new_user/SurveyUser';
 
 export {
     AuthPage,
@@ -15,5 +16,6 @@ export {
     ProfilePage,
     QuotesPage,
     MainPage,
-    ForgotPassword
+    ForgotPassword,
+    SurveyUser
 }

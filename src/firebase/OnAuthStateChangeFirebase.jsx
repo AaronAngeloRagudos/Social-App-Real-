@@ -1,18 +1,22 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { auth } from "./index";
-import { whenUserIsLoggedIn } from "../redux/slice/authSlice";
+import { createContext, useEffect, useState } from "react";
+import { auth } from "./firebase.config";
 
-export default function OnAuthStateChangeFirebase ({ children }) {
-    const dispatch = useDispatch();
+export const OnAuthStateChangeFirebase = createContext({});
+
+export default function OnAuthStateChangeFirebaseProvider ({ children }) {
+    const [loggedInUser, setLoggedInUser] = useState(null);
     
     useEffect(() => {
-        const getLoggedInUser = onAuthStateChanged(auth, loggedinUser => {
-            dispatch(whenUserIsLoggedIn(loggedinUser));
+        const getLoggedInUser = onAuthStateChanged(auth, user => {
+            setLoggedInUser(user);
         });
         return () => getLoggedInUser();
     }, []);
 
-    return children;
+    return (
+        <OnAuthStateChangeFirebase.Provider value={{ loggedInUser }}>
+            { children }
+        </OnAuthStateChangeFirebase.Provider>
+    );
 };

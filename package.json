@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aaronragudos/vulgarity-filter-library": "^1.0.0",
     "@reduxjs/toolkit": "^1.9.3",
     "firebase": "^9.19.1",
     "firebase-hooks": "^0.0.1",

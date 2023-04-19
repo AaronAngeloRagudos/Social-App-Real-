@@ -114,8 +114,8 @@ export default function AuthRegisterInput(props) {
                                     title={'Password strength'}
                                 >
                                     <span className='auth_progress_bar'>&nbsp;</span>
-                                    <p className='auth_strength_text'>weak</p>
                                 </div>
+                                <p className='auth_strength_text'>weak</p>
                             </>
                         }
                     </label>

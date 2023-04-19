@@ -24,6 +24,7 @@ export default function Login() {
         <form
             id="auth_login_form"
             onSubmit={ async (e) => {
+                e.preventDefault();
                 const { AuthHandleSubmit } = await import(
                     '../../utils'
                 );

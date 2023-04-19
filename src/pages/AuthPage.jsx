@@ -59,7 +59,7 @@ function AuthPageJSX({ method }) {
                         {
                             method === 'register'
                             &&
-                            <Suspense fallback={ <Loader /> } >
+                            <Suspense fallback={ <h1>Loading</h1> } >
                                 <Register />
                             </Suspense>
                         }

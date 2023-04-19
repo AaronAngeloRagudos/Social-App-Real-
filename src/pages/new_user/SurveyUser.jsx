@@ -1,4 +1,4 @@
-export default function SurveryUser () {
+export default function SurveyUser() {
 
     return (
         <div>SurverUser</div>

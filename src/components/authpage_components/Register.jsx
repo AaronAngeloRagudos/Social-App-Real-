@@ -26,6 +26,7 @@ export default function Register() {
         <form
             id="auth_register_form"
             onSubmit={async (e) => {
+                e.preventDefault();
                 const { AuthHandleSubmit } = await import(
                     '../../utils'
                 );

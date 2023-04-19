@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Error, MainPage } from '../pages';
+import { Error, MainPage, SurveyUser } from '../pages';
 import { HandleChatPageRoutes, HandleProfilePageRoutes, HandleQuotesPageRoutes } from './index';
 
 export default function HandleMainPageRoutes() {
@@ -28,6 +28,12 @@ export default function HandleMainPageRoutes() {
         path="quotespage"
         element={
           <HandleQuotesPageRoutes />
+        }
+      />
+      <Route 
+        path="new_user"
+        element={
+          <SurveyUser />
         }
       />
       <Route

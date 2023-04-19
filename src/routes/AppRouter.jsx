@@ -15,7 +15,7 @@ export default function AppRouter() {
         }
       />
       <Route
-        path="authpage/*"
+        path="/authpage/*"
         element={
           <HandleAuthPageRoutes />
         }

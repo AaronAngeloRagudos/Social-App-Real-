@@ -43,6 +43,7 @@ export default function AuthLoginInput(props) {
                                 placeholder={input.placeholder}
                                 title={input.title}
                                 required
+                                minLength={input.id === 'auth_password_input' ? 4 : 1}
                                 value={
                                     input.id === 'auth_email_input'
                                         ? props.email
@@ -100,12 +101,10 @@ export default function AuthLoginInput(props) {
                                 <div
                                     id='auth_password_strength_indicator'
                                     className='auth_password_strength_indicator'
-                                    value={0}
-                                    max={100}
                                 >
                                 <span className='auth_progress_bar'>&nbsp;</span>
-                                <p className='auth_strength_text'>weak</p>
                                 </div>
+                                <p className='auth_strength_text'>weak</p>
                             </>
                         }
                     </label>
