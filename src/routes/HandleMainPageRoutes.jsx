@@ -1,6 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { Error, MainPage, SurveyUser } from '../pages';
+import { Error, Loader, SurveyUser } from '../pages';
 import { HandleChatPageRoutes, HandleProfilePageRoutes, HandleQuotesPageRoutes } from './index';
+import { Suspense, lazy } from "react";
+
+const MainPage = lazy(() => import('../pages/MainPage'));
 
 export default function HandleMainPageRoutes() {
 
@@ -9,7 +12,9 @@ export default function HandleMainPageRoutes() {
       <Route
         index
         element={
-          <MainPage />
+          <Suspense fallback={ <Loader /> }>
+            <MainPage />
+          </Suspense>
         }
       />
       <Route

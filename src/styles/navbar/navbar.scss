@@ -1,0 +1,160 @@
+@import '../global/mediaqueries.scss';
+@import '../global/mixins.scss';
+@import '../global/variables.scss';
+
+nav.navbar {
+    position: fixed;
+    min-height: 5.75rem;
+    width: 100%;
+
+    .navigation_container {
+        max-width: 75%;
+        margin: 0 auto;
+        @include flexRow(space-between, center);
+
+        padding: 0.85rem 0;
+
+        .search_input_container {
+            max-width: 50rem;
+            flex: 0.4;
+            position: relative;
+            padding: 0.35rem 0.85rem;
+            @include flexRow(center, center);
+            gap: 0.25rem;
+
+            border: 1.5px solid white;
+            border-radius: 1.5rem;
+
+            button {
+                background-color: transparent;
+                border: none;
+                outline: transparent;
+
+                padding: 0.1rem;
+                margin-left: 0.2rem;
+                width: 1.75rem;
+                height: 1.75rem;
+
+                cursor: pointer;
+
+                &:focus {
+                    outline: 1px solid;
+
+                    @include lightMode {
+                        outline-color: map-get($backgroundColors, 'black');
+                    }
+
+                    @include darkMode {
+                        outline-color: map-get($backgroundColors, 'white');
+                    }
+                }
+            }
+
+
+            .search_input {
+                flex: 1;
+                background-color: transparent;
+                border: none;
+                outline: transparent;
+
+                font-size: 1.15rem;
+
+                @include lightMode {
+                    color: map-get($textColors, 'black');
+                }
+
+                @include darkMode {
+                    color: map-get($textColors, 'white');
+                }
+            }
+
+            svg {
+                width: 100%;
+                height: 100%;
+                margin-top: 0.05rem;
+
+                @include lightMode {
+                    fill: map-get($backgroundColors, 'black');
+                }
+
+                @include darkMode {
+                    fill: map-get($backgroundColors, 'white');
+                }
+            }
+        }
+    }
+}
+
+.user_options_icon_container {
+    width: 3.25rem;
+    height: 3.25rem;
+
+    .user_options_icon {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        border-radius: 100%;
+        background-color: transparent;
+        border: none;
+        outline: transparent;
+
+        &:focus {
+            outline: 1px solid;
+    
+            @include lightMode {
+                outline-color: map-get($backgroundColors, 'black');
+            }
+    
+            @include darkMode {
+                outline-color: map-get($backgroundColors, 'white');
+            }
+        }
+
+        img {
+            width: 100%;
+            max-width: 100%;
+
+            border-radius: 100%;
+
+            border: 1.5px solid white;
+        }
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+            position: absolute;
+            top: 70%;
+            left: 60%;
+
+            border: 1.5px solid;
+            border-radius: 100%;
+
+            @include lightMode {
+                fill: map-get($backgroundColors, 'black');
+                border-color: map-get($backgroundColors, 'black');
+                background-color: rgb(199, 200, 200);
+            }
+
+            @include darkMode {
+                fill: map-get($backgroundColors, 'white');
+                border-color: map-get($backgroundColors, 'white');
+                background-color: rgb(51, 50, 50);
+            }
+
+            transition: 150ms ease-in-out;
+
+            @include reducedMotion {
+                transition: 0ms;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            svg {
+                transform: translateY(12.5%);
+            }
+        }
+
+    }
+}

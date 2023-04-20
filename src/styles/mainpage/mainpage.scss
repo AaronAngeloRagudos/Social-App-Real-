@@ -1,0 +1,17 @@
+@import '../global/mediaqueries.scss';
+@import '../global//mixins.scss';
+@import '../global/variables.scss';
+
+.mainpage_container {
+    @include lightMode {
+        background-color: map-get($backgroundColors, 'white');
+        color: map-get($textColors, 'black');
+    }
+
+    @include darkMode {
+        background-color: map-get($backgroundColors, 'black');
+        color: map-get($textColors, 'white');
+    }
+
+    @include centerDiv;
+}
