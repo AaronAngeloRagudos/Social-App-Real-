@@ -1,7 +1,21 @@
+@keyframes slidedown {
+  from {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  80% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 nav.navbar {
   position: fixed;
-  min-height: 5.75rem;
+  min-height: 3.75rem;
   width: 100%;
+  background-color: inherit;
 }
 nav.navbar .navigation_container {
   max-width: 75%;
@@ -12,7 +26,36 @@ nav.navbar .navigation_container {
   flex-direction: row;
   padding: 0.85rem 0;
 }
-nav.navbar .navigation_container .search_input_container {
+@media (prefers-color-scheme: light) {
+  nav.navbar .navigation_container .search_input_container {
+    border-color: rgb(25, 20, 20);
+  }
+  nav.navbar .navigation_container button:focus {
+    outline-color: rgb(25, 20, 20);
+  }
+  nav.navbar .navigation_container .search_input {
+    color: rgb(0, 0, 0);
+  }
+  nav.navbar .navigation_container svg {
+    fill: rgb(25, 20, 20);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  nav.navbar .search_input_container {
+    border-color: rgb(230, 235, 235);
+  }
+  nav.navbar button:focus {
+    outline-color: rgb(230, 235, 235);
+  }
+  nav.navbar .search_input {
+    color: rgb(250, 250, 250);
+  }
+  nav.navbar svg {
+    fill: rgb(230, 235, 235);
+  }
+}
+
+.search_input_container {
   max-width: 50rem;
   flex: 0.4;
   position: relative;
@@ -22,10 +65,10 @@ nav.navbar .navigation_container .search_input_container {
   align-items: center;
   flex-direction: row;
   gap: 0.25rem;
-  border: 1.5px solid white;
+  border: 1.5px solid;
   border-radius: 1.5rem;
 }
-nav.navbar .navigation_container .search_input_container button {
+.search_input_container button {
   background-color: transparent;
   border: none;
   outline: transparent;
@@ -35,50 +78,20 @@ nav.navbar .navigation_container .search_input_container button {
   height: 1.75rem;
   cursor: pointer;
 }
-nav.navbar .navigation_container .search_input_container button:focus {
+.search_input_container button:focus {
   outline: 1px solid;
 }
-@media (prefers-color-scheme: light) {
-  nav.navbar .navigation_container .search_input_container button:focus {
-    outline-color: rgb(25, 20, 20);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  nav.navbar .navigation_container .search_input_container button:focus {
-    outline-color: rgb(230, 235, 235);
-  }
-}
-nav.navbar .navigation_container .search_input_container .search_input {
+.search_input_container .search_input {
   flex: 1;
   background-color: transparent;
   border: none;
   outline: transparent;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
 }
-@media (prefers-color-scheme: light) {
-  nav.navbar .navigation_container .search_input_container .search_input {
-    color: rgb(0, 0, 0);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  nav.navbar .navigation_container .search_input_container .search_input {
-    color: rgb(250, 250, 250);
-  }
-}
-nav.navbar .navigation_container .search_input_container svg {
+.search_input_container svg {
   width: 100%;
   height: 100%;
   margin-top: 0.05rem;
-}
-@media (prefers-color-scheme: light) {
-  nav.navbar .navigation_container .search_input_container svg {
-    fill: rgb(25, 20, 20);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  nav.navbar .navigation_container .search_input_container svg {
-    fill: rgb(230, 235, 235);
-  }
 }
 
 .user_options_icon_container {
@@ -98,21 +111,27 @@ nav.navbar .navigation_container .search_input_container svg {
 .user_options_icon_container .user_options_icon:focus {
   outline: 1px solid;
 }
+.user_options_icon_container .user_options_icon img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 100%;
+  border: 1.5px solid;
+}
 @media (prefers-color-scheme: light) {
   .user_options_icon_container .user_options_icon:focus {
     outline-color: rgb(25, 20, 20);
+  }
+  .user_options_icon_container .user_options_icon img {
+    border-color: rgb(25, 20, 20);
   }
 }
 @media (prefers-color-scheme: dark) {
   .user_options_icon_container .user_options_icon:focus {
     outline-color: rgb(230, 235, 235);
   }
-}
-.user_options_icon_container .user_options_icon img {
-  width: 100%;
-  max-width: 100%;
-  border-radius: 100%;
-  border: 1.5px solid white;
+  .user_options_icon_container .user_options_icon img {
+    border-color: rgb(230, 235, 235);
+  }
 }
 .user_options_icon_container .user_options_icon svg {
   width: 1.2rem;
@@ -126,14 +145,12 @@ nav.navbar .navigation_container .search_input_container svg {
 }
 @media (prefers-color-scheme: light) {
   .user_options_icon_container .user_options_icon svg {
-    fill: rgb(25, 20, 20);
     border-color: rgb(25, 20, 20);
     background-color: rgb(199, 200, 200);
   }
 }
 @media (prefers-color-scheme: dark) {
   .user_options_icon_container .user_options_icon svg {
-    fill: rgb(230, 235, 235);
     border-color: rgb(230, 235, 235);
     background-color: rgb(51, 50, 50);
   }
@@ -145,4 +162,100 @@ nav.navbar .navigation_container .search_input_container svg {
 }
 .user_options_icon_container .user_options_icon:hover svg, .user_options_icon_container .user_options_icon:focus svg {
   transform: translateY(12.5%);
+}
+
+.user_options_container {
+  position: relative;
+}
+
+.user_options {
+  width: clamp(10rem, 20vw, 13rem);
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  margin-top: 1rem;
+}
+.user_options ul {
+  padding: 1rem 0.75rem;
+  list-style: none;
+  border-radius: 1rem;
+  animation: slidedown 250ms ease-in-out forwards;
+}
+.user_options ul li:nth-child(3) button {
+  margin-bottom: 0.3rem;
+}
+.user_options ul li button {
+  cursor: pointer;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: transparent;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  margin-top: 0.3rem;
+}
+.user_options ul li button:focus, .user_options ul li button:hover {
+  outline: 1px solid;
+}
+.user_options ul li button p {
+  width: 7.5rem;
+}
+.user_options ul li button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  transition: 250ms ease-in-out;
+}
+@media (prefers-reduced-motion) {
+  .user_options ul li button svg {
+    transition: 0ms;
+  }
+}
+.user_options ul li button:hover .svg_user_icon.settings_icon {
+  transform: rotate(50deg);
+}
+.user_options ul li button:hover .svg_user_icon.logout_icon {
+  transform: translateX(5%);
+}
+@media (prefers-color-scheme: light) {
+  .user_options ul {
+    box-shadow: 0 0 0.25rem rgb(25, 20, 20);
+  }
+  .user_options ul li button {
+    color: rgb(35, 30, 30);
+  }
+  .user_options ul li button:focus, .user_options ul li button:hover {
+    outline-color: rgb(25, 20, 20);
+    color: rgb(0, 0, 0);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .user_options ul {
+    box-shadow: 0 0 0.25rem rgb(230, 235, 235);
+  }
+  .user_options ul li button {
+    color: rgb(225, 220, 220);
+  }
+  .user_options ul li button:focus, .user_options ul li button:hover {
+    outline-color: rgb(230, 235, 235);
+    color: rgb(250, 250, 250);
+  }
+}
+
+.rotate_vertical {
+  transform: rotate(180deg) !important;
+  transition: 250ms ease-in-out !important;
+}
+.rotate_vertical:hover {
+  transform: rotate(180deg) !important;
+}
+@media (prefers-reduced-motion) {
+  .rotate_vertical {
+    transition: 0ms;
+  }
 }/*# sourceMappingURL=navbar.css.map */

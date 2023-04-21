@@ -11,4 +11,20 @@ body {
   font-family: "Montserrat", sans-serif;
   line-height: 1.5rem;
 }
-/*# sourceMappingURL=index.css.map */
+
+.mainpage {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+}
+.mainpage div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.mainpage div p {
+  text-overflow: ellipsis;
+  white-space: initial;
+  word-wrap: break-word;
+}/*# sourceMappingURL=index.css.map */

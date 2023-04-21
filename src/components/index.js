@@ -1,5 +1,5 @@
 import { Register, Login, SignInMethods } from './authpage_components';
-import NavBar from './NavBar';
+import { NavBar } from './navbar';
 
 export {
     // for authpage

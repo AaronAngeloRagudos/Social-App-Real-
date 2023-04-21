@@ -1,11 +1,14 @@
 @import '../global/mediaqueries.scss';
 @import '../global/mixins.scss';
 @import '../global/variables.scss';
+@import '../global//keyframes.scss';
 
 nav.navbar {
     position: fixed;
-    min-height: 5.75rem;
+    min-height: 3.75rem;
     width: 100%;
+
+    background-color: inherit;
 
     .navigation_container {
         max-width: 75%;
@@ -14,74 +17,90 @@ nav.navbar {
 
         padding: 0.85rem 0;
 
-        .search_input_container {
-            max-width: 50rem;
-            flex: 0.4;
-            position: relative;
-            padding: 0.35rem 0.85rem;
-            @include flexRow(center, center);
-            gap: 0.25rem;
-
-            border: 1.5px solid white;
-            border-radius: 1.5rem;
+        @include lightMode {
+            .search_input_container {
+                border-color: map-get($backgroundColors, 'black');
+            }
 
             button {
-                background-color: transparent;
-                border: none;
-                outline: transparent;
-
-                padding: 0.1rem;
-                margin-left: 0.2rem;
-                width: 1.75rem;
-                height: 1.75rem;
-
-                cursor: pointer;
-
                 &:focus {
-                    outline: 1px solid;
-
-                    @include lightMode {
-                        outline-color: map-get($backgroundColors, 'black');
-                    }
-
-                    @include darkMode {
-                        outline-color: map-get($backgroundColors, 'white');
-                    }
+                    outline-color: map-get($backgroundColors, 'black');
                 }
             }
 
-
             .search_input {
-                flex: 1;
-                background-color: transparent;
-                border: none;
-                outline: transparent;
-
-                font-size: 1.15rem;
-
-                @include lightMode {
-                    color: map-get($textColors, 'black');
-                }
-
-                @include darkMode {
-                    color: map-get($textColors, 'white');
-                }
+                color: map-get($textColors, 'black');
             }
 
             svg {
-                width: 100%;
-                height: 100%;
-                margin-top: 0.05rem;
-
-                @include lightMode {
-                    fill: map-get($backgroundColors, 'black');
-                }
-
-                @include darkMode {
-                    fill: map-get($backgroundColors, 'white');
-                }
+                fill: map-get($backgroundColors, 'black');
             }
         }
+    }
+
+    @include darkMode {
+        .search_input_container {
+            border-color: map-get($backgroundColors, 'white');
+        }
+
+        button {
+            &:focus {
+                outline-color: map-get($backgroundColors, 'white');
+            }
+        }
+
+        .search_input {
+            color: map-get($textColors, 'white');
+        }
+
+        svg {
+            fill: map-get($backgroundColors, 'white');
+        }
+
+    }
+}
+
+.search_input_container {
+    max-width: 50rem;
+    flex: 0.4;
+    position: relative;
+    padding: 0.35rem 0.85rem;
+    @include flexRow(center, center);
+    gap: 0.25rem;
+
+    border: 1.5px solid;
+    border-radius: 1.5rem;
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: transparent;
+
+        padding: 0.1rem;
+        margin-left: 0.2rem;
+        width: 1.75rem;
+        height: 1.75rem;
+
+        cursor: pointer;
+
+        &:focus {
+            outline: 1px solid;
+        }
+    }
+
+    .search_input {
+        flex: 1;
+        background-color: transparent;
+        border: none;
+        outline: transparent;
+
+        font-size: 1.05rem;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+        margin-top: 0.05rem;
     }
 }
 
@@ -101,14 +120,6 @@ nav.navbar {
 
         &:focus {
             outline: 1px solid;
-    
-            @include lightMode {
-                outline-color: map-get($backgroundColors, 'black');
-            }
-    
-            @include darkMode {
-                outline-color: map-get($backgroundColors, 'white');
-            }
         }
 
         img {
@@ -117,7 +128,27 @@ nav.navbar {
 
             border-radius: 100%;
 
-            border: 1.5px solid white;
+            border: 1.5px solid;
+        }
+
+        @include lightMode {
+            &:focus {
+                outline-color: map-get($backgroundColors, 'black');
+            }
+
+            img {
+                border-color: map-get($backgroundColors, 'black');
+            }
+        }
+
+        @include darkMode {
+            &:focus {
+                outline-color: map-get($backgroundColors, 'white');
+            }
+
+            img {
+                border-color: map-get($backgroundColors, 'white');
+            }
         }
 
         svg {
@@ -131,13 +162,11 @@ nav.navbar {
             border-radius: 100%;
 
             @include lightMode {
-                fill: map-get($backgroundColors, 'black');
                 border-color: map-get($backgroundColors, 'black');
                 background-color: rgb(199, 200, 200);
             }
 
             @include darkMode {
-                fill: map-get($backgroundColors, 'white');
                 border-color: map-get($backgroundColors, 'white');
                 background-color: rgb(51, 50, 50);
             }
@@ -156,5 +185,125 @@ nav.navbar {
             }
         }
 
+    }
+}
+
+.user_options_container {
+    position: relative;
+}
+
+.user_options {
+    width: clamp(10rem, 20vw, 13rem);
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+
+    margin-top: 1rem;
+
+    ul {
+        padding: 1rem 0.75rem;
+        list-style: none;
+        border-radius: 1rem;
+        @include slideDown(250ms, ease-in-out);
+
+        li {
+            &:nth-child(3) {
+                button {
+                    margin-bottom: 0.3rem;
+                }
+            }
+
+            button {
+                cursor: pointer;
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                outline: transparent;
+                border-radius: 0.5rem;
+
+                @include flexRow(center, center);
+                gap: 0.25rem;
+                padding: 0.3rem;
+
+                margin-top: 0.3rem;
+
+                &:focus,
+                &:hover {
+                    outline: 1px solid;
+                }
+
+                p {
+                    width: 7.5rem;
+                }
+
+                svg {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    border-radius: 100%;
+
+                    transition: 250ms ease-in-out;
+
+                    @include reducedMotion {
+                        transition: 0ms;
+                    }
+                }
+
+                &:hover {
+                    .svg_user_icon.settings_icon {
+                        transform: rotate(50deg);
+                    }
+
+                    .svg_user_icon.logout_icon {
+                        transform: translateX(5%);
+                    }
+                }
+            }
+        }
+
+        @include lightMode {
+            box-shadow: 0 0 0.25rem map-get($backgroundColors, 'black');
+
+            li {
+                button {
+                    color: rgb(35, 30, 30);
+
+                    &:focus,
+                    &:hover {
+                        outline-color: map-get($backgroundColors, 'black');
+                        color: map-get($textColors, 'black');
+                    }
+                }
+            }
+        }
+
+        @include darkMode {
+            box-shadow: 0 0 0.25rem map-get($backgroundColors, 'white');
+
+            li {
+                button {
+                    color: rgb(225, 220, 220);
+
+                    &:focus,
+                    &:hover {
+                        outline-color: map-get($backgroundColors, 'white');
+                        color: map-get($textColors, 'white');
+                    }
+                }
+            }
+        }
+    }
+}
+
+.rotate_vertical {
+    @include rotate(180deg);
+
+    &:hover {
+        @include rotate(180deg);
+    }
+
+    transition: 250ms ease-in-out !important;
+
+    @include reducedMotion {
+        transition: 0ms;
     }
 }
